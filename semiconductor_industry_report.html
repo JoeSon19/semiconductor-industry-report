@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semiconductor Industry Report</title>
+    <style>
+        :root {
+            --primary: #1a5632;
+            --primary-light: #e8f5e9;
+            --accent: #2196F3;
+            --accent-light: #e3f2fd;
+            --text: #333;
+            --text-light: #666;
+            --border: #ddd;
+            --bg: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .report-header {
+            background: linear-gradient(135deg, var(--primary), #2e7d4f);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .report-header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .report-header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .report-header .source {
+            margin-top: 15px;
+            font-size: 0.9em;
+            opacity: 0.75;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: white;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .toc h2 {
+            font-size: 1.5em;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .toc ol {
+            list-style: none;
+            counter-reset: toc-counter;
+        }
+
+        .toc > ol > li {
+            counter-increment: toc-counter;
+            margin-bottom: 8px;
+        }
+
+        .toc > ol > li > a {
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        .toc a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+        }
+
+        .toc ol ol {
+            margin-left: 25px;
+            margin-top: 5px;
+        }
+
+        .toc ol ol li {
+            margin-bottom: 4px;
+            font-size: 0.95em;
+        }
+
+        /* Sections */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 35px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #2e7d4f;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.15em;
+            color: var(--text);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        thead {
+            background: var(--primary);
+            color: white;
+        }
+
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:nth-child(even) {
+            background: var(--bg);
+        }
+
+        tbody tr:hover {
+            background: var(--primary-light);
+        }
+
+        /* Info boxes */
+        .info-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 10px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Charts placeholder */
+        .chart-container {
+            background: #f5f5f5;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .chart-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .chart-label {
+            width: 140px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        .chart-bar-fill {
+            height: 28px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: white;
+            font-size: 0.85em;
+            font-weight: 600;
+            min-width: 40px;
+        }
+
+        /* Process flow */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .process-step {
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .process-arrow {
+            font-size: 1.5em;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Classification grid */
+        .class-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .class-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px 20px;
+        }
+
+        .class-card h5 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .class-card p {
+            font-size: 0.93em;
+            margin-bottom: 0;
+        }
+
+        /* Value chain */
+        .value-chain {
+            display: flex;
+            justify-content: space-between;
+            margin: 25px 0;
+            gap: 5px;
+        }
+
+        .vc-step {
+            flex: 1;
+            text-align: center;
+            padding: 15px 8px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .vc-step.design { background: #e3f2fd; color: #1565c0; }
+        .vc-step.fab { background: #e8f5e9; color: #2e7d32; }
+        .vc-step.equip { background: #fff3e0; color: #e65100; }
+        .vc-step.pack { background: #f3e5f5; color: #7b1fa2; }
+        .vc-step.test { background: #fce4ec; color: #c62828; }
+
+        /* Footer */
+        .report-footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .section { padding: 20px; }
+            .report-header { padding: 30px 20px; }
+            .report-header h1 { font-size: 1.8em; }
+            .class-grid { grid-template-columns: 1fr; }
+            .value-chain { flex-direction: column; }
+            .process-flow { flex-direction: column; }
+            .process-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="report-header">
+            <h1>Semiconductor Industry Report</h1>
+            <div class="subtitle">Comprehensive Industry Analysis: Overview, Structure, Competition & Outlook</div>
+            <div class="source" style="margin-top: 10px; font-size: 1em; opacity: 1;">Created by Joe Son</div>
+        </header>
+
+        <!-- Table of Contents -->
+        <nav class="toc">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#sec6" style="color: var(--primary);"><strong>Recommended YouTube Resources</strong></a></li>
+                <li><a href="#sec1">1. Industry Overview and Basic Concepts</a>
+                    <ol>
+                        <li><a href="#sec1-1">1.1 Definition and Concept of Semiconductors</a></li>
+                        <li><a href="#sec1-2">1.2 Industry Scale</a></li>
+                        <li><a href="#sec1-3">1.3 Industry History</a></li>
+                    </ol>
+                </li>
+                <li><a href="#sec2">2. Industry and Company Overview</a>
+                    <ol>
+                        <li><a href="#sec2-1">2.1 Industry Characteristics</a></li>
+                        <li><a href="#sec2-2">2.2 Semiconductor Type-by-Type Share</a></li>
+                        <li><a href="#sec2-3">2.3 Segment-Specific Market Share</a></li>
+                    </ol>
+                </li>
+                <li><a href="#sec3">3. Industry Structure</a>
+                    <ol>
+                        <li><a href="#sec3-1">3.1 Value Chain</a></li>
+                        <li><a href="#sec3-2">3.2 Industry Analysis and Outlook</a></li>
+                        <li><a href="#sec3-3">3.3 Related Issues</a></li>
+                    </ol>
+                </li>
+                <li><a href="#sec4">4. Competition and Major Companies</a>
+                    <ol>
+                        <li><a href="#sec4-1">4.1 Competitive Landscape</a></li>
+                        <li><a href="#sec4-2">4.2 Financial Performance Comparison</a></li>
+                    </ol>
+                </li>
+                <li><a href="#sec5">5. Industry Trends and Recent Developments</a>
+                    <ol>
+                        <li><a href="#sec5-1">5.1 Recent Market Trends</a></li>
+                        <li><a href="#sec5-2">5.2 Key Industry Issues</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Section: Recommended YouTube Resources (First) -->
+        <section class="section" id="sec6">
+            <h2>Recommended YouTube Resources</h2>
+            <p>The following YouTube videos are curated as supplementary learning resources for this report. They are ordered intentionally to build understanding progressively — starting from the fundamental science of semiconductors, then moving through the manufacturing process, the industry ecosystem, and finally the critical equipment that enables it all.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Video Title</th>
+                        <th>Channel</th>
+                        <th>Summary</th>
+                        <th>Why This Order</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td><a href="https://youtu.be/nJsRUju_dQc" target="_blank" style="color: var(--primary); font-weight:600;">What is a Semiconductor? | Band Gap, Doping &amp; How Semiconductors Work</a></td>
+                        <td>Engineeringness</td>
+                        <td>Explains the fundamental physics behind semiconductors, including band gap theory, doping with impurities to create N-type and P-type materials, and how these principles enable transistors and modern electronics.</td>
+                        <td style="background: #f0faf3;"><strong>Start here:</strong> Before understanding the industry, you must first grasp <em>what a semiconductor actually is</em> at the material science level — this video builds that essential foundation.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td><a href="https://youtu.be/Bu52CE55BN0" target="_blank" style="color: var(--primary); font-weight:600;">'Semiconductor Manufacturing Process' Explained | 'All About Semiconductor' by Samsung Semiconductor</a></td>
+                        <td>Samsung Semiconductor Newsroom</td>
+                        <td>Walks through the entire semiconductor manufacturing process from raw silicon sand to finished chip — covering wafer fabrication, oxidation, photolithography, etching, deposition, ion implantation, metal wiring, EDS testing, and packaging.</td>
+                        <td style="background: #f0faf3;"><strong>Step 2:</strong> Now that you understand the material, this video shows <em>how chips are actually made</em> — the complete fab process from sand to packaged chip, connecting theory to real-world manufacturing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td><a href="https://youtu.be/VJwnAaZw7Ac" target="_blank" style="color: var(--primary); font-weight:600;">'Semiconductor Ecosystem' Explained | 'All About Semiconductor' by Samsung Semiconductor</a></td>
+                        <td>Samsung Semiconductor Newsroom</td>
+                        <td>Provides a comprehensive overview of the semiconductor ecosystem, explaining how IDMs, foundries, fabless companies, design houses, IP providers, and OSAT companies each play interconnected roles in design, manufacturing, and testing.</td>
+                        <td style="background: #f0faf3;"><strong>Step 3:</strong> With manufacturing knowledge in place, this video zooms out to show <em>how the entire industry is structured</em> — who designs, who manufactures, who tests, and how all the players fit together.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td><a href="https://youtu.be/B2482h_TNwg" target="_blank" style="color: var(--primary); font-weight:600;">The $200M Machine that Prints Microchips: The EUV Photolithography System</a></td>
+                        <td>Branch Education</td>
+                        <td>Deep-dives into ASML's EUV (Extreme Ultraviolet) photolithography system — one of the most complex and expensive machines ever built — explaining how it uses 13.5nm wavelength light to print nanometer-scale transistor patterns on silicon wafers.</td>
+                        <td style="background: #f0faf3;"><strong>Step 4 (Deep Dive):</strong> As a capstone, this video focuses on the single most critical piece of equipment in modern chip manufacturing — the EUV machine — tying together physics, engineering, and the geopolitical importance of ASML's monopoly.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Learning Path Logic:</strong> The videos follow a <strong>bottom-up learning approach</strong>: (1) Fundamental science → (2) Manufacturing process → (3) Industry ecosystem → (4) Key enabling technology. This progression ensures each video builds on the knowledge from the previous one, creating a comprehensive understanding of the semiconductor industry from atoms to global supply chains.
+            </div>
+        </section>
+
+        <!-- Section 1: Industry Overview and Basic Concepts -->
+        <section class="section" id="sec1">
+            <h2>1. Industry Overview and Basic Concepts</h2>
+
+            <h3 id="sec1-1">1.1 Definition and Concept of Semiconductors</h3>
+
+            <h4>1.1.1 Definition of Semiconductors</h4>
+            <p>A <strong>semiconductor</strong> is a material whose electrical conductivity falls between that of a conductor and an insulator. In its pure state, a semiconductor behaves like an insulator, but when specific impurities are added (a process known as <strong>doping</strong>), or when external conditions such as temperature, light, or voltage change, its conductivity can be precisely controlled. This unique property makes semiconductors the foundational material for modern electronics.</p>
+
+            <p>The semiconductor industry refers to the entire ecosystem of companies involved in the design, manufacturing, and sale of semiconductor devices. These devices include integrated circuits (ICs), which are the core components of virtually all electronic devices including smartphones, computers, servers, automobiles, and industrial equipment.</p>
+
+            <div class="info-box">
+                <strong>Key Concept:</strong> Semiconductors serve as the "brain" of electronic devices. They process, store, and transmit data, making them indispensable to modern technology across all sectors.
+            </div>
+
+            <h4>1.1.2 Semiconductor Classification and Types</h4>
+            <p>Semiconductors can be broadly classified into several categories based on their function and manufacturing model:</p>
+
+            <div class="class-grid">
+                <div class="class-card">
+                    <h5>Memory Semiconductors</h5>
+                    <p>Used for data storage. Main types include <strong>DRAM</strong> (Dynamic Random Access Memory) for temporary, volatile storage, and <strong>NAND Flash</strong> for non-volatile, permanent storage. ROM (Read Only Memory) is another type used for firmware.</p>
+                </div>
+                <div class="class-card">
+                    <h5>Non-Memory (System) Semiconductors</h5>
+                    <p>Designed for data processing and control. Includes <strong>CPUs</strong>, <strong>GPUs</strong>, <strong>AP (Application Processors)</strong>, and various logic chips. These are characterized by high design complexity and diverse product lines.</p>
+                </div>
+                <div class="class-card">
+                    <h5>Analog Semiconductors</h5>
+                    <p>Handle continuous signals. Used in power management ICs, sensors, and signal converters. Also includes optoelectronic devices and discrete semiconductors.</p>
+                </div>
+                <div class="class-card">
+                    <h5>Other Categories</h5>
+                    <p>Includes <strong>Micro components</strong> (MCU, MPU), <strong>Logic ICs</strong>, <strong>Image sensors</strong>, <strong>Touch controllers</strong>, and <strong>SAO</strong> (Sensors, Analog, and Others).</p>
+                </div>
+            </div>
+
+            <h4>Semiconductor Classification Diagram</h4>
+            <div class="chart-container">
+                <div class="chart-title">Semiconductor Product Classification</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Sub-Category</th>
+                            <th>Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><strong>Memory</strong></td>
+                            <td>Volatile</td>
+                            <td>DRAM, SRAM</td>
+                        </tr>
+                        <tr>
+                            <td>Non-Volatile</td>
+                            <td>NAND Flash, NOR Flash, ROM</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4"><strong>Non-Memory (System)</strong></td>
+                            <td>Micro</td>
+                            <td>CPU, GPU, AP, MCU</td>
+                        </tr>
+                        <tr>
+                            <td>Logic</td>
+                            <td>ASIC, FPGA</td>
+                        </tr>
+                        <tr>
+                            <td>Analog</td>
+                            <td>Power Management IC, Signal Converters</td>
+                        </tr>
+                        <tr>
+                            <td>Optoelectronics / Sensors</td>
+                            <td>Image Sensors, Touch Controllers, LED</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Discrete</strong></td>
+                            <td>Individual Components</td>
+                            <td>Transistors, Diodes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>1.1.3 Wafers and Integrated Circuit Dies</h4>
+            <p>A <strong>wafer</strong> is a thin, circular slice of semiconductor material (typically silicon) that serves as the substrate for fabricating integrated circuits. Wafers are manufactured from high-purity silicon ingots and are available in standard sizes (200mm and 300mm being the most common in production).</p>
+
+            <p>An <strong>integrated circuit (IC) die</strong> is a small block of semiconductor material on which a given functional circuit is fabricated. Multiple dies are produced simultaneously on a single wafer. After fabrication, the wafer is cut (diced) into individual dies, which are then packaged into the final semiconductor products.</p>
+
+            <p>The manufacturing process from raw silicon to finished chips involves hundreds of precise steps including photolithography, etching, ion implantation, and deposition, requiring extremely clean environments (cleanrooms) and advanced equipment.</p>
+
+            <!-- Section 1.2 -->
+            <h3 id="sec1-2">1.2 Industry Scale</h3>
+
+            <h4>1.2.1 Global Semiconductor Industry Scale</h4>
+            <p>The global semiconductor industry has experienced significant growth over the past decades. The market has expanded from approximately $210 billion in revenue around 2010 to becoming a massive global industry. By 2022, the worldwide semiconductor market reached approximately <strong>$580 billion USD</strong>, though it experienced a slight cyclical downturn.</p>
+
+            <p>The industry has maintained a compound annual growth rate (CAGR) of approximately <strong>6-8%</strong> over the long term. Key growth drivers include the proliferation of smartphones, expansion of data centers, advancement of AI technologies, growth of IoT devices, and increasing semiconductor content in automobiles.</p>
+
+            <div class="highlight-box">
+                <strong>Market Projection:</strong> The global semiconductor market is projected to surpass $600 billion and continue growing, driven by AI, automotive electronics, and data infrastructure investments. By 2030, the industry is expected to reach approximately $1 trillion in annual revenue according to various forecasts.
+            </div>
+
+            <h4>Market Size Growth Trend (Revenue in USD Billions)</h4>
+            <div class="chart-container">
+                <div class="chart-title">Global Semiconductor Market Revenue (Approximate)</div>
+                <div class="chart-bar">
+                    <span class="chart-label">2015</span>
+                    <div class="chart-bar-fill" style="width: 52%; background: #4caf50;">$335B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2016</span>
+                    <div class="chart-bar-fill" style="width: 54%; background: #4caf50;">$339B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2017</span>
+                    <div class="chart-bar-fill" style="width: 63%; background: #4caf50;">$412B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2018</span>
+                    <div class="chart-bar-fill" style="width: 72%; background: #4caf50;">$469B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2019</span>
+                    <div class="chart-bar-fill" style="width: 62%; background: #4caf50;">$412B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2020</span>
+                    <div class="chart-bar-fill" style="width: 67%; background: #4caf50;">$440B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2021</span>
+                    <div class="chart-bar-fill" style="width: 82%; background: #2e7d32;">$556B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2022</span>
+                    <div class="chart-bar-fill" style="width: 85%; background: #2e7d32;">$574B</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">2023 (est.)</span>
+                    <div class="chart-bar-fill" style="width: 78%; background: #66bb6a;">~$520B</div>
+                </div>
+                <p style="font-size:0.85em; color:#888; margin-top:8px;">Source: Gartner, Statista</p>
+            </div>
+
+            <h4>Semiconductor Market by Country (2021, USD Billions)</h4>
+            <div class="chart-container">
+                <div class="chart-title">National Semiconductor Product Sales</div>
+                <div class="chart-bar">
+                    <span class="chart-label">United States</span>
+                    <div class="chart-bar-fill" style="width: 80%; background: #1565c0;">$263.5B (46%)</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">South Korea</span>
+                    <div class="chart-bar-fill" style="width: 40%; background: #2196f3;">$116.7B (21%)</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Japan</span>
+                    <div class="chart-bar-fill" style="width: 16%; background: #42a5f5;">~$50B (9%)</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Taiwan</span>
+                    <div class="chart-bar-fill" style="width: 14%; background: #64b5f6;">$44.5B (8%)</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">China</span>
+                    <div class="chart-bar-fill" style="width: 12%; background: #90caf9;">$38.9B (7%)</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Europe & Others</span>
+                    <div class="chart-bar-fill" style="width: 16%; background: #bbdefb;">$50.0B (9%)</div>
+                </div>
+                <p style="font-size:0.85em; color:#888; margin-top:8px;">Source: CSIS</p>
+            </div>
+
+            <!-- Section 1.3 -->
+            <h3 id="sec1-3">1.3 Industry History</h3>
+
+            <h4>1.3.1 Vacuum Tubes to the Early Transistor Era</h4>
+            <p>The history of the semiconductor industry dates back to the mid-20th century. Before semiconductors, <strong>vacuum tubes</strong> were used in electronic circuits. However, vacuum tubes were large, power-hungry, generated significant heat, and had limited reliability.</p>
+
+            <p>In 1947, the invention of the <strong>transistor</strong> at Bell Telephone Company (Bell Labs) by John Bardeen, Walter Brattain, and William Shockley marked a revolutionary breakthrough. The transistor could perform the same functions as vacuum tubes but was far smaller, more efficient, and more reliable. This invention is widely considered the starting point of the modern electronics era.</p>
+
+            <p>In 1958, <strong>Jack Kilby</strong> at Texas Instruments demonstrated the first integrated circuit, and Robert Noyce at Fairchild Semiconductor independently developed a practical version using planar technology. These innovations led to the ability to place multiple transistors on a single chip, forming the foundation of the semiconductor industry as we know it.</p>
+
+            <p>Intel was founded in 1968, and in 1971 produced the first commercial microprocessor (Intel 4004), establishing the paradigm of general-purpose computing on a chip. Moore's Law, proposed by Intel co-founder Gordon Moore, predicted that the number of transistors on an IC would double approximately every two years — a trend that has guided industry development for decades.</p>
+
+            <h4>1.3.2 Transition to Modern Semiconductor Manufacturing</h4>
+            <p>As the industry matured, semiconductor manufacturing became increasingly complex and capital-intensive. The transition from simple discrete devices to large-scale integrated circuits required massive investments in fabrication facilities (fabs) and equipment.</p>
+
+            <p>Key milestones in this transition include:</p>
+            <ul>
+                <li><strong>1970s-1980s:</strong> Japan emerged as a major semiconductor producer, particularly in memory chips (DRAM), challenging U.S. dominance. Companies like NEC, Toshiba, and Hitachi became global leaders.</li>
+                <li><strong>1980s-1990s:</strong> South Korea entered the semiconductor industry. Samsung Electronics began DRAM production in 1983 and rapidly caught up to Japanese competitors through aggressive investment and technology development.</li>
+                <li><strong>1990s:</strong> Taiwan established itself as a manufacturing hub. TSMC (founded 1987) pioneered the <strong>pure-play foundry model</strong>, separating chip design from manufacturing.</li>
+                <li><strong>2000s onwards:</strong> The fabless-foundry model expanded. Design-focused companies (fabless) like Qualcomm, NVIDIA, and AMD outsourced manufacturing to foundries like TSMC and Samsung Foundry.</li>
+            </ul>
+
+            <h4>1.3.3 Growth of the Korean Semiconductor Industry</h4>
+            <p>South Korea's semiconductor industry began in earnest in the 1980s when Samsung Electronics decided to enter the DRAM market. Despite being a latecomer, Samsung invested aggressively during industry downturns — a counter-cyclical strategy that eventually allowed it to overtake Japanese competitors.</p>
+
+            <p>SK Hynix (formerly Hyundai Electronics) also became a major memory manufacturer. Together, Samsung and SK Hynix came to dominate the global memory semiconductor market, controlling a combined <strong>70%+ share of DRAM</strong> and a significant portion of NAND Flash production.</p>
+
+            <p>The Korean semiconductor industry's success was built on several factors: massive capital investment, government support, rapid technology catch-up, and skilled engineering talent. Korea's strength is concentrated in memory semiconductors, while the country has been working to expand capabilities in system semiconductors (non-memory) and foundry services.</p>
+
+            <h4>1.3.4 Expansion of Semiconductor Applications</h4>
+            <p>Semiconductors have expanded far beyond computing devices. Today, they are essential components in:</p>
+            <ul>
+                <li><strong>Smartphones and Mobile Devices:</strong> Application processors, memory, sensors, and connectivity chips</li>
+                <li><strong>Automotive:</strong> Advanced Driver Assistance Systems (ADAS), infotainment, electric vehicle power management</li>
+                <li><strong>Data Centers / Cloud:</strong> High-performance CPUs, GPUs for AI training, high-bandwidth memory</li>
+                <li><strong>IoT (Internet of Things):</strong> Low-power microcontrollers, sensors, and connectivity modules</li>
+                <li><strong>Industrial / Defense:</strong> Control systems, power electronics, specialized processors</li>
+            </ul>
+
+            <h4>1.3.5 Rise of the Foundry Business Model</h4>
+            <p>The foundry business model, pioneered by TSMC's Morris Chang, transformed the semiconductor industry. Before this model, most semiconductor companies were <strong>Integrated Device Manufacturers (IDMs)</strong> that designed and manufactured their own chips.</p>
+
+            <p>The foundry model enabled the rise of <strong>fabless companies</strong> — firms that design chips but outsource manufacturing. This dramatically lowered barriers to entry for chip design, enabling innovation by companies like Qualcomm, NVIDIA, AMD, MediaTek, and many startups. The foundry model became the dominant paradigm for non-memory semiconductor production.</p>
+
+            <h4>1.3.6 Memory Semiconductor Competition</h4>
+            <p>The memory semiconductor market has been characterized by intense competition and consolidation. From dozens of DRAM manufacturers in the 1980s-1990s, the market consolidated to just three major players: <strong>Samsung Electronics</strong>, <strong>SK Hynix</strong>, and <strong>Micron Technology</strong>. In NAND Flash, the major players include Samsung, SK Hynix (Solidigm), Kioxia (formerly Toshiba Memory), Western Digital, and Micron.</p>
+
+            <h4>1.3.7 Recent Semiconductor Industry Trends</h4>
+            <p>Recent years have seen several transformative trends:</p>
+            <ul>
+                <li><strong>AI-driven demand:</strong> Explosive growth in AI accelerators (GPUs, TPUs) driven by large language models and generative AI</li>
+                <li><strong>Geopolitical tensions:</strong> U.S.-China technology decoupling, export controls, and reshoring efforts</li>
+                <li><strong>Government subsidies:</strong> Major legislation including the U.S. CHIPS Act, EU Chips Act, and similar initiatives in Japan, Korea, and India</li>
+                <li><strong>Advanced packaging:</strong> Technologies like chiplets, 3D stacking, and heterogeneous integration to continue performance scaling</li>
+                <li><strong>Process technology race:</strong> Competition to reach 3nm, 2nm, and below among TSMC, Samsung, and Intel</li>
+            </ul>
+        </section>
+
+        <!-- Section 2: Industry and Company Overview -->
+        <section class="section" id="sec2">
+            <h2>2. Industry and Company Overview</h2>
+
+            <h3 id="sec2-1">2.1 Industry Characteristics</h3>
+
+            <h4>2.1.1 Key Characteristics of the Semiconductor Industry</h4>
+            <p>The semiconductor industry exhibits several distinctive characteristics that differentiate it from other manufacturing industries:</p>
+
+            <ul>
+                <li><strong>Capital Intensity:</strong> Building a state-of-the-art semiconductor fab costs $10-20+ billion, making it one of the most capital-intensive industries in the world. Only a few companies can afford such investments.</li>
+                <li><strong>Technology Intensity:</strong> The industry requires cutting-edge technology across materials science, physics, chemistry, and engineering. R&D spending typically accounts for 15-25% of revenue.</li>
+                <li><strong>Cyclicality (Silicon Cycle):</strong> The semiconductor industry is highly cyclical, experiencing boom-and-bust cycles driven by supply-demand imbalances.</li>
+                <li><strong>Economies of Scale:</strong> High fixed costs and low marginal costs create strong economies of scale, favoring large-volume producers.</li>
+                <li><strong>Rapid Technological Change:</strong> Product lifecycles are short, and continuous innovation is essential for competitiveness.</li>
+                <li><strong>Global Supply Chain:</strong> The semiconductor value chain is highly globalized, with different stages of production often occurring in different countries.</li>
+            </ul>
+
+            <h4>2.1.2 The Silicon Cycle</h4>
+            <p>The <strong>Silicon Cycle</strong> refers to the recurring pattern of expansion and contraction in the semiconductor industry. This cyclicality is driven by the inherent lag between capacity investment decisions and actual production output.</p>
+
+            <p>A typical cycle follows this pattern:</p>
+            <ol>
+                <li><strong>Upswing:</strong> Strong demand leads to price increases and high profitability</li>
+                <li><strong>Over-investment:</strong> High profits encourage aggressive capacity expansion by multiple players</li>
+                <li><strong>Oversupply:</strong> New capacity comes online simultaneously, leading to excess supply</li>
+                <li><strong>Downturn:</strong> Prices fall, margins compress, and weaker players reduce investment</li>
+                <li><strong>Recovery:</strong> Demand catches up with supply, inventory normalizes, and the cycle restarts</li>
+            </ol>
+
+            <div class="info-box">
+                <strong>Silicon Cycle Duration:</strong> Historically, the semiconductor cycle has lasted approximately 3-5 years from peak to peak. However, structural changes in the industry (consolidation, diversified demand) may be moderating the severity of cycles, though they continue to exist.
+            </div>
+
+            <h4>2.1.3 Business Model Types</h4>
+            <p>The semiconductor industry features several distinct business models:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Business Model</th>
+                        <th>Description</th>
+                        <th>Key Examples</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IDM (Integrated Device Manufacturer)</strong></td>
+                        <td>Designs, manufactures, and sells its own chips. Controls the full value chain.</td>
+                        <td>Samsung, Intel, SK Hynix, Texas Instruments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fabless</strong></td>
+                        <td>Designs chips but outsources manufacturing to foundries.</td>
+                        <td>NVIDIA, Qualcomm, AMD, Broadcom, MediaTek</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Foundry</strong></td>
+                        <td>Manufactures chips designed by other companies. Does not sell its own branded products.</td>
+                        <td>TSMC, Samsung Foundry, GlobalFoundries, UMC, SMIC</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OSAT (Outsourced Semiconductor Assembly & Test)</strong></td>
+                        <td>Provides packaging and testing services.</td>
+                        <td>ASE, Amkor, JCET</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IP Provider</strong></td>
+                        <td>Licenses semiconductor intellectual property (design blocks).</td>
+                        <td>ARM, Synopsys, Cadence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EDA (Electronic Design Automation)</strong></td>
+                        <td>Provides software tools for chip design.</td>
+                        <td>Synopsys, Cadence, Siemens EDA</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="chart-container">
+                <div class="chart-title">Semiconductor Industry Revenue by Business Model</div>
+                <div class="chart-bar">
+                    <span class="chart-label">IDM</span>
+                    <div class="chart-bar-fill" style="width: 72%; background: #1565c0;">~72%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Fabless</span>
+                    <div class="chart-bar-fill" style="width: 23%; background: #2196f3;">~23%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Foundry</span>
+                    <div class="chart-bar-fill" style="width: 15%; background: #42a5f5;">(Included in value chain)</div>
+                </div>
+                <p style="font-size:0.85em; color:#888; margin-top:8px;"></p>
+            </div>
+
+            <!-- Section 2.2 -->
+            <h3 id="sec2-2">2.2 Semiconductor Type-by-Type Share</h3>
+
+            <h4>Semiconductor Market Share by Product Type</h4>
+            <p>The global semiconductor market is composed of several product categories, each with different market sizes and growth dynamics. As of recent years, the breakdown is approximately:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Semiconductor Type</th>
+                        <th>Market Share (Approx.)</th>
+                        <th>Key Trends</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Memory</strong> (DRAM + NAND)</td>
+                        <td>~25-30%</td>
+                        <td>Cyclical; AI-driven HBM demand surge</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logic</strong></td>
+                        <td>~27%</td>
+                        <td>Growing from AI accelerators and custom ASICs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Micro</strong> (MPU/MCU)</td>
+                        <td>~14%</td>
+                        <td>Automotive and IoT driving MCU growth</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analog</strong></td>
+                        <td>~15%</td>
+                        <td>Steady growth; automotive and industrial applications</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Optoelectronics</strong></td>
+                        <td>~8%</td>
+                        <td>LED, laser, image sensor demand</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discrete</strong></td>
+                        <td>~6%</td>
+                        <td>Power semiconductors for EVs growing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sensors</strong></td>
+                        <td>~3%</td>
+                        <td>Autonomous driving and IoT applications</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.85em; color:#888;">Source: World Semiconductor Trade Statistics (WSTS)</p>
+
+            <h4>End-Market Application Distribution</h4>
+            <p>Semiconductors serve diverse end markets. The application distribution (with projected shifts) shows the following breakdown:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Application Area</th>
+                        <th>2022 Share</th>
+                        <th>2030 Forecast</th>
+                        <th>Key Driver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Smartphones</td>
+                        <td>~23%</td>
+                        <td>~19%</td>
+                        <td>Mature market; on-device AI</td>
+                    </tr>
+                    <tr>
+                        <td>Computing (PC/Server)</td>
+                        <td>~19%</td>
+                        <td>~22%</td>
+                        <td>AI server and data center growth</td>
+                    </tr>
+                    <tr>
+                        <td>Servers & Data Centers</td>
+                        <td>~16%</td>
+                        <td>~19%</td>
+                        <td>Cloud computing and AI workloads</td>
+                    </tr>
+                    <tr>
+                        <td>Automotive</td>
+                        <td>~12%</td>
+                        <td>~15%</td>
+                        <td>EV, ADAS, autonomous driving</td>
+                    </tr>
+                    <tr>
+                        <td>Industrial / Military</td>
+                        <td>~12%</td>
+                        <td>~14%</td>
+                        <td>Industry 4.0, defense electronics</td>
+                    </tr>
+                    <tr>
+                        <td>Consumer Electronics</td>
+                        <td>~9%</td>
+                        <td>~7%</td>
+                        <td>Declining share; mature products</td>
+                    </tr>
+                    <tr>
+                        <td>Communications</td>
+                        <td>~9%</td>
+                        <td>~10%</td>
+                        <td>5G/6G infrastructure</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.85em; color:#888;">Source: KSIA</p>
+
+            <!-- Section 2.3 -->
+            <h3 id="sec2-3">2.3 Segment-Specific Market Share</h3>
+
+            <h4>2.3.1 Memory Semiconductor Company Market Share</h4>
+            <p>The memory semiconductor market is highly concentrated, with the top three players controlling the majority of both DRAM and NAND Flash production:</p>
+
+            <p><strong>DRAM Market Share:</strong></p>
+            <div class="chart-container">
+                <div class="chart-bar">
+                    <span class="chart-label">Samsung</span>
+                    <div class="chart-bar-fill" style="width: 70%; background: #1565c0;">~40-43%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">SK Hynix</span>
+                    <div class="chart-bar-fill" style="width: 50%; background: #2196f3;">~28-30%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Micron</span>
+                    <div class="chart-bar-fill" style="width: 40%; background: #42a5f5;">~23-25%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Others</span>
+                    <div class="chart-bar-fill" style="width: 10%; background: #90caf9;">~2-4%</div>
+                </div>
+            </div>
+
+            <h4>2.3.2 Fabless Company Market Share</h4>
+            <p>The fabless semiconductor segment features more diverse competition. Major players include companies specializing in specific application areas:</p>
+
+            <div class="chart-container">
+                <div class="chart-title">Top Fabless Companies by Revenue</div>
+                <div class="chart-bar">
+                    <span class="chart-label">NVIDIA</span>
+                    <div class="chart-bar-fill" style="width: 75%; background: #76b900;">Leading (AI GPUs)</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Qualcomm</span>
+                    <div class="chart-bar-fill" style="width: 55%; background: #3253dc;">Mobile/Connectivity</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Broadcom</span>
+                    <div class="chart-bar-fill" style="width: 53%; background: #cc0000;">Networking/Custom</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">AMD</span>
+                    <div class="chart-bar-fill" style="width: 40%; background: #ed1c24;">CPU/GPU</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">MediaTek</span>
+                    <div class="chart-bar-fill" style="width: 35%; background: #ffc107;">Mobile AP</div>
+                </div>
+            </div>
+
+            <h4>2.3.3 Foundry Company Market Share</h4>
+            <p>The foundry market is dominated by TSMC, which holds an overwhelming market share due to its technological leadership in advanced process nodes:</p>
+
+            <div class="chart-container">
+                <div class="chart-title">Foundry Market Share</div>
+                <div class="chart-bar">
+                    <span class="chart-label">TSMC</span>
+                    <div class="chart-bar-fill" style="width: 90%; background: #c62828;">~56-60%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Samsung</span>
+                    <div class="chart-bar-fill" style="width: 25%; background: #1565c0;">~12-15%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">GlobalFoundries</span>
+                    <div class="chart-bar-fill" style="width: 12%; background: #2e7d32;">~6%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">UMC</span>
+                    <div class="chart-bar-fill" style="width: 12%; background: #f57f17;">~6%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">SMIC</span>
+                    <div class="chart-bar-fill" style="width: 10%; background: #e65100;">~5%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Others</span>
+                    <div class="chart-bar-fill" style="width: 14%; background: #9e9e9e;">~7-12%</div>
+                </div>
+                <p style="font-size:0.85em; color:#888; margin-top:8px;">Source: Gartner</p>
+            </div>
+
+            <h4>Top Semiconductor Companies by Revenue (Global)</h4>
+            <p>The overall ranking of semiconductor companies by revenue includes both IDMs and fabless companies:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Company</th>
+                        <th>Country</th>
+                        <th>Market Share (Approx.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Intel (INTC)</td><td>US</td><td>~12.7%</td></tr>
+                    <tr><td>2</td><td>Samsung Electronics</td><td>South Korea</td><td>~12.5%</td></tr>
+                    <tr><td>3</td><td>Qualcomm (QCOM)</td><td>US</td><td>~5.2%</td></tr>
+                    <tr><td>4</td><td>Broadcom (AVGO)</td><td>US</td><td>~7.6%</td></tr>
+                    <tr><td>5</td><td>Texas Instruments (TXN)</td><td>US</td><td>~4.1%</td></tr>
+                    <tr><td>6</td><td>MediaTek</td><td>Taiwan</td><td>~4.0%</td></tr>
+                    <tr><td>7</td><td>Apple (AAPL)</td><td>US</td><td>~4.6%</td></tr>
+                    <tr><td>8</td><td>STMicroelectronics</td><td>Switzerland</td><td>~3.4%</td></tr>
+                    <tr><td>9</td><td>NVIDIA (NVDA)</td><td>US</td><td>~3.4%</td></tr>
+                    <tr><td>10</td><td>Infineon (IFX)</td><td>Germany</td><td>~3.3%</td></tr>
+                    <tr><td>11</td><td>NXP Semiconductors</td><td>Netherlands</td><td>~2.8%</td></tr>
+                    <tr><td>12</td><td>Analog Devices (ADI)</td><td>US</td><td>~2.7%</td></tr>
+                    <tr><td>13</td><td>SK Hynix (000939.KS)</td><td>South Korea</td><td>~2.5%</td></tr>
+                    <tr><td>-</td><td>Others</td><td>-</td><td>~39.5%</td></tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.85em; color:#888;">Source: Gartner, Korean Economic Daily</p>
+        </section>
+
+        <!-- Section 3: Industry Structure -->
+        <section class="section" id="sec3">
+            <h2>3. Industry Structure</h2>
+
+            <h3 id="sec3-1">3.1 Value Chain</h3>
+
+            <h4>3.1.1 Semiconductor Industry Value Chain Overview</h4>
+            <p>The semiconductor value chain is a complex, globally distributed ecosystem. No single country or company possesses all the capabilities required for end-to-end semiconductor design and manufacturing. The value chain encompasses the following key stages:</p>
+
+            <div class="value-chain">
+                <div class="vc-step design">
+                    <strong>Design</strong><br>
+                    EDA Tools<br>
+                    IP Licensing<br>
+                    Chip Architecture
+                </div>
+                <div class="vc-step fab">
+                    <strong>Fabrication</strong><br>
+                    Wafer Manufacturing<br>
+                    Front-end Process<br>
+                    Lithography/Etching
+                </div>
+                <div class="vc-step equip">
+                    <strong>Equipment &amp; Materials</strong><br>
+                    Lithography (ASML)<br>
+                    Etch/Deposition<br>
+                    Silicon Wafers
+                </div>
+                <div class="vc-step pack">
+                    <strong>Packaging</strong><br>
+                    Assembly<br>
+                    Advanced Packaging<br>
+                    Chiplet Integration
+                </div>
+                <div class="vc-step test">
+                    <strong>Testing</strong><br>
+                    Wafer Probing<br>
+                    Final Testing<br>
+                    Quality Assurance
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Geographic Concentration Risk:</strong> No single market or company has all the capabilities required for end-to-end semiconductor design and manufacturing. As of 2020, semiconductor sales along the value chain showed heavy geographic concentration — the U.S. leads in design and EDA, East Asia (Taiwan, Korea) dominates manufacturing, the Netherlands (ASML) controls advanced lithography equipment, and Japan is key in materials and equipment.
+            </div>
+
+            <h4>3.1.2 Semiconductor Manufacturing Process Overview</h4>
+            <p>The semiconductor manufacturing process is divided into <strong>front-end</strong> (wafer fabrication) and <strong>back-end</strong> (assembly, packaging, and testing) processes.</p>
+
+            <div class="process-flow">
+                <div class="process-step">Circuit Design</div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step">Mask/Reticle Creation</div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step">Wafer Fabrication (Front-end)</div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step">Wafer Testing (EDS)</div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step">Packaging (Back-end)</div>
+                <div class="process-arrow">&rarr;</div>
+                <div class="process-step">Final Testing</div>
+            </div>
+
+            <h4>3.1.3 Front-End Manufacturing Process (Wafer Fabrication)</h4>
+
+            <p><strong>(a) Ingot Growth and Wafer Preparation:</strong> The process begins with growing a single-crystal silicon ingot using the Czochralski method. The cylindrical ingot is then sliced into thin wafers, which are polished to an extremely flat, mirror-like finish. Standard wafer sizes are 200mm (8-inch) and 300mm (12-inch).</p>
+
+            <p><strong>(b) Oxidation:</strong> A thin layer of silicon dioxide (SiO₂) is grown on the wafer surface by exposing it to oxygen at high temperatures. This oxide layer serves as an insulator and protective coating for subsequent processing steps.</p>
+
+            <p><strong>(c) Photolithography:</strong> This is the core patterning process. A light-sensitive material (photoresist) is applied to the wafer. Ultraviolet light is shone through a patterned mask (reticle) to transfer the circuit pattern onto the photoresist. After development, the pattern is revealed on the wafer surface. As feature sizes shrink, the industry has moved from DUV (Deep Ultraviolet) to <strong>EUV (Extreme Ultraviolet) lithography</strong> for the most advanced nodes (7nm and below).</p>
+
+            <p><strong>(d) Etching:</strong> The exposed areas of the wafer (not protected by the photoresist pattern) are removed using chemical (wet etch) or plasma-based (dry etch) processes. This transfers the circuit pattern into the underlying material layers.</p>
+
+            <p><strong>(e) Deposition:</strong> Thin films of various materials (metals, insulators, semiconductors) are deposited onto the wafer surface using techniques such as Chemical Vapor Deposition (CVD), Physical Vapor Deposition (PVD/sputtering), and Atomic Layer Deposition (ALD).</p>
+
+            <p><strong>(f) Ion Implantation:</strong> Specific impurity atoms (dopants) are accelerated and implanted into selected regions of the silicon wafer to modify its electrical properties. This process creates the n-type and p-type regions essential for transistor operation.</p>
+
+            <p><strong>(g) Chemical Mechanical Planarization (CMP):</strong> The wafer surface is polished to achieve a flat, uniform surface between process layers. This is critical for maintaining focus accuracy in lithography at advanced nodes.</p>
+
+            <p>These steps are repeated dozens to hundreds of times to build up the multiple layers of an integrated circuit. Modern advanced chips may require <strong>over 1,000 individual process steps</strong> and take several months to complete.</p>
+
+            <h4>3.1.4 Back-End Manufacturing Process (Assembly, Packaging & Testing)</h4>
+
+            <p><strong>(a) Electrical Die Sorting (EDS) / Wafer Probing:</strong> After front-end processing is complete, each individual die on the wafer is tested electrically using fine probe needles. Dies that fail testing are marked (inked) and will not proceed to packaging, improving overall cost efficiency.</p>
+
+            <p><strong>(b) Dicing (Wafer Cutting):</strong> The tested wafer is cut into individual dies using a diamond saw or laser. Each good die is then ready for packaging.</p>
+
+            <p><strong>(c) Packaging:</strong> Individual dies are mounted onto a substrate or lead frame, wire-bonded or flip-chip connected, and encapsulated in protective material. Packaging serves multiple functions:</p>
+            <ul>
+                <li>Physical protection of the die</li>
+                <li>Electrical connections to the circuit board</li>
+                <li>Heat dissipation</li>
+                <li>Signal integrity management</li>
+            </ul>
+
+            <p>Advanced packaging technologies are increasingly important and include:</p>
+            <ul>
+                <li><strong>2.5D Packaging:</strong> Using a silicon interposer to connect multiple dies side-by-side</li>
+                <li><strong>3D Packaging:</strong> Stacking dies vertically with through-silicon vias (TSVs)</li>
+                <li><strong>Fan-Out Wafer Level Packaging (FOWLP):</strong> Redistributing I/O connections over a larger area</li>
+                <li><strong>Chiplet Architecture:</strong> Combining multiple specialized dies in a single package</li>
+            </ul>
+
+            <p><strong>(d) Final Testing:</strong> Packaged chips undergo comprehensive electrical and functional testing under various temperature and voltage conditions to ensure they meet specifications. Only chips that pass all tests are shipped to customers.</p>
+
+            <!-- Section 3.2 -->
+            <h3 id="sec3-2">3.2 Industry Analysis and Outlook</h3>
+
+            <h4>3.2.1 Current Industry Trends</h4>
+            <p>The semiconductor industry is undergoing significant transformation driven by several key trends:</p>
+
+            <p><strong>AI and High-Performance Computing:</strong> The explosive growth of artificial intelligence, particularly large language models and generative AI, has created unprecedented demand for high-performance computing chips. NVIDIA's GPU data center revenue has grown exponentially, and custom AI accelerators from companies like Google (TPU), Amazon (Trainium/Inferentia), and Microsoft are expanding the market.</p>
+
+            <p><strong>HBM (High Bandwidth Memory) Demand:</strong> AI accelerators require massive memory bandwidth, driving demand for High Bandwidth Memory. SK Hynix has emerged as the leader in HBM, with Samsung and Micron competing aggressively. HBM revenue has grown dramatically and is expected to continue expanding.</p>
+
+            <p><strong>Automotive Semiconductor Growth:</strong> The transition to electric vehicles and increasing adoption of ADAS (Advanced Driver Assistance Systems) features is dramatically increasing semiconductor content per vehicle. A modern EV may contain $1,000-$2,000+ worth of semiconductors, compared to $300-$500 in traditional vehicles.</p>
+
+            <h4>3.2.2 Market Outlook</h4>
+            <p>The semiconductor market outlook is shaped by both cyclical recovery and structural growth drivers:</p>
+            <ul>
+                <li>The memory market is recovering from the 2023 downturn, with DRAM and NAND prices stabilizing and AI-driven HBM demand providing strong uplift</li>
+                <li>Logic/foundry spending continues to grow, driven by advanced node demand for AI chips</li>
+                <li>Analog and power semiconductors benefit from automotive and industrial electrification</li>
+                <li>Government subsidies globally are stimulating new fab construction, though the full impact will take years to materialize</li>
+            </ul>
+
+            <h4>3.2.3 AI and the Semiconductor Industry</h4>
+            <p>AI has become the single most important growth driver for the semiconductor industry. The relationship between AI and semiconductors is symbiotic: advances in semiconductor technology enable more powerful AI models, while AI demand drives semiconductor innovation and investment.</p>
+
+            <p>Key areas where AI impacts the semiconductor industry include:</p>
+            <ul>
+                <li><strong>Training chips:</strong> GPUs and custom accelerators for training large AI models (NVIDIA H100/B100, Google TPU)</li>
+                <li><strong>Inference chips:</strong> Optimized chips for deploying AI models in production (edge and cloud)</li>
+                <li><strong>Memory:</strong> HBM and next-generation memory for AI workloads</li>
+                <li><strong>AI in chip design:</strong> Using AI/ML to improve the chip design process itself (EDA optimization)</li>
+                <li><strong>Edge AI:</strong> Specialized NPUs (Neural Processing Units) integrated into smartphones, PCs, and IoT devices</li>
+            </ul>
+
+            <!-- Section 3.3 -->
+            <h3 id="sec3-3">3.3 Related Issues</h3>
+
+            <h4>3.3.1 Global Supply Chain Challenges</h4>
+            <p>The semiconductor supply chain's global nature creates both efficiency and vulnerability. The COVID-19 pandemic exposed critical supply chain risks, causing severe chip shortages that affected industries from automotive to consumer electronics.</p>
+
+            <p>Key supply chain issues include:</p>
+            <ul>
+                <li><strong>Geographic concentration:</strong> Over 90% of advanced semiconductor manufacturing (sub-10nm) is concentrated in Taiwan (TSMC) and South Korea (Samsung), creating geopolitical risk</li>
+                <li><strong>Long lead times:</strong> Building a new fab takes 2-4 years and costs $10-20+ billion</li>
+                <li><strong>Equipment bottlenecks:</strong> ASML is the sole supplier of EUV lithography equipment, creating a critical single point of dependency</li>
+                <li><strong>Materials dependency:</strong> Specialty chemicals, gases, and rare materials are sourced from a limited number of suppliers</li>
+            </ul>
+
+            <h4>3.3.2 U.S.-China Technology Competition</h4>
+            <p>The intensifying technology rivalry between the United States and China is reshaping the semiconductor industry. The U.S. has implemented increasingly stringent export controls on advanced semiconductor technology to China, including:</p>
+            <ul>
+                <li>Restrictions on sales of advanced AI chips (NVIDIA A100/H100) to China</li>
+                <li>Export controls on advanced semiconductor manufacturing equipment</li>
+                <li>Restrictions on U.S. persons supporting Chinese semiconductor development</li>
+                <li>Expansion of entity list restrictions on Chinese semiconductor companies</li>
+            </ul>
+
+            <p>China, in response, is accelerating domestic semiconductor development through massive government investment and the pursuit of self-sufficiency. However, achieving parity in advanced manufacturing technology remains a major challenge.</p>
+
+            <h4>3.3.3 Government Policies and Subsidies</h4>
+            <p>Governments worldwide are implementing major semiconductor support policies:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Country/Region</th>
+                        <th>Key Policy</th>
+                        <th>Investment Scale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>United States</td>
+                        <td>CHIPS and Science Act</td>
+                        <td>$52.7 billion in subsidies + tax credits</td>
+                    </tr>
+                    <tr>
+                        <td>European Union</td>
+                        <td>EU Chips Act</td>
+                        <td>&euro;43 billion in public/private investment</td>
+                    </tr>
+                    <tr>
+                        <td>South Korea</td>
+                        <td>K-Chips Act (tax incentives)</td>
+                        <td>Tax credits up to 25% for facility investment</td>
+                    </tr>
+                    <tr>
+                        <td>Japan</td>
+                        <td>Semiconductor Strategy</td>
+                        <td>&yen;3.9 trillion+ for Rapidus, TSMC Japan fabs</td>
+                    </tr>
+                    <tr>
+                        <td>China</td>
+                        <td>Big Fund (Phase III)</td>
+                        <td>$47.5 billion (Phase III, 2024)</td>
+                    </tr>
+                    <tr>
+                        <td>India</td>
+                        <td>India Semiconductor Mission</td>
+                        <td>$10 billion incentive program</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>3.3.4 Sustainability and Energy Concerns</h4>
+            <p>Semiconductor manufacturing is energy-intensive and raises environmental concerns. A modern fab consumes enormous amounts of electricity and ultra-pure water. As ESG (Environmental, Social, and Governance) considerations become more important, the industry faces pressure to:</p>
+            <ul>
+                <li>Reduce energy consumption and carbon emissions in manufacturing</li>
+                <li>Minimize water usage and improve recycling</li>
+                <li>Reduce use of hazardous chemicals</li>
+                <li>Develop more energy-efficient chip designs</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>Note:</strong> Leading companies like TSMC, Samsung, and Intel have set ambitious targets for renewable energy adoption and carbon neutrality, recognizing both regulatory pressure and customer expectations for sustainable supply chains.
+            </div>
+        </section>
+
+        <!-- Section 4: Competition and Major Companies -->
+        <section class="section" id="sec4">
+            <h2>4. Competition and Major Companies</h2>
+
+            <h3 id="sec4-1">4.1 Competitive Landscape</h3>
+
+            <h4>4.1.1 Semiconductor Industry Competitive Structure</h4>
+            <p>The semiconductor industry's competitive landscape varies significantly by segment. Memory semiconductors are oligopolistic with 2-3 dominant players, while system semiconductors feature more fragmented competition across specialized niches.</p>
+
+            <p>Key competitive factors include:</p>
+            <ul>
+                <li><strong>Technology leadership:</strong> Ability to achieve smaller process nodes and better performance/power efficiency</li>
+                <li><strong>Scale and cost efficiency:</strong> Manufacturing yield, capacity utilization, and economies of scale</li>
+                <li><strong>Customer relationships:</strong> Design wins with major OEMs and system integrators</li>
+                <li><strong>R&D investment:</strong> Continuous innovation to maintain competitive edge</li>
+                <li><strong>Capital expenditure:</strong> Ability to invest in next-generation manufacturing capacity</li>
+                <li><strong>IP portfolio:</strong> Patents and proprietary technology</li>
+            </ul>
+
+            <h4>4.1.2 Competitive Dynamics in the AI Era</h4>
+            <p>The rise of AI has significantly altered competitive dynamics in the semiconductor industry. NVIDIA has emerged as the dominant provider of AI training hardware, achieving extraordinary revenue growth and market valuation. This has intensified competition across multiple fronts:</p>
+
+            <div class="highlight-box">
+                <strong>Key Competitive Dynamics:</strong>
+                <ul style="margin-top:8px;">
+                    <li><strong>NVIDIA vs. AMD:</strong> GPU competition for data center AI workloads</li>
+                    <li><strong>Custom silicon:</strong> Hyperscalers (Google, Amazon, Microsoft, Meta) developing their own AI chips</li>
+                    <li><strong>TSMC's dominance:</strong> Almost all advanced AI chips are manufactured by TSMC, giving it significant pricing power</li>
+                    <li><strong>Memory competition:</strong> SK Hynix vs. Samsung vs. Micron in HBM</li>
+                    <li><strong>China's catch-up efforts:</strong> Huawei/HiSilicon and others developing domestic alternatives</li>
+                </ul>
+            </div>
+
+            <p>The race for AI semiconductor leadership has driven massive increases in investment. Average selling prices for AI accelerators are significantly higher than traditional chips, creating a shift in industry revenue mix toward AI-optimized products.</p>
+
+            <h4>4.1.3 Industry Ecosystem and Technology Partnerships</h4>
+            <p>The semiconductor industry operates within a complex ecosystem of partnerships and dependencies. Key relationships include:</p>
+            <ul>
+                <li><strong>EDA vendors (Synopsys, Cadence, Siemens EDA)</strong> provide essential design tools used by virtually all chip designers</li>
+                <li><strong>IP providers (ARM, Imagination)</strong> license processor cores and other building blocks</li>
+                <li><strong>Equipment companies (ASML, Applied Materials, Lam Research, Tokyo Electron)</strong> supply the machines needed for manufacturing</li>
+                <li><strong>Materials suppliers (Shin-Etsu, SUMCO, Entegris)</strong> provide wafers, chemicals, and gases</li>
+            </ul>
+
+            <!-- Section 4.2 -->
+            <h3 id="sec4-2">4.2 Financial Performance Comparison</h3>
+
+            <h4>4.2.1 Revenue and Profitability</h4>
+            <p>Major semiconductor companies display varying financial profiles depending on their business model and market segment:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Business Model</th>
+                        <th>Key Revenue Segments</th>
+                        <th>Approx. Gross Margin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NVIDIA</td>
+                        <td>Fabless</td>
+                        <td>Data Center (AI GPUs), Gaming</td>
+                        <td>~70-75%</td>
+                    </tr>
+                    <tr>
+                        <td>TSMC</td>
+                        <td>Foundry</td>
+                        <td>Wafer Fabrication Services</td>
+                        <td>~53-57%</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung (Semiconductor)</td>
+                        <td>IDM + Foundry</td>
+                        <td>Memory, Foundry, System LSI</td>
+                        <td>~35-50% (varies with cycle)</td>
+                    </tr>
+                    <tr>
+                        <td>Intel</td>
+                        <td>IDM</td>
+                        <td>Client Computing, Data Center, Foundry</td>
+                        <td>~40-45%</td>
+                    </tr>
+                    <tr>
+                        <td>Broadcom (AVGO)</td>
+                        <td>Fabless</td>
+                        <td>Networking, Custom Silicon, Software</td>
+                        <td>~65-70%</td>
+                    </tr>
+                    <tr>
+                        <td>SK Hynix</td>
+                        <td>IDM</td>
+                        <td>DRAM, NAND, HBM</td>
+                        <td>~30-45% (cyclical)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>4.2.2 R&D Investment Comparison</h4>
+            <p>R&D investment is critical for maintaining competitiveness in the semiconductor industry. Major companies allocate significant portions of revenue to research and development:</p>
+
+            <div class="chart-container">
+                <div class="chart-title">R&D Spending as % of Revenue (Approximate)</div>
+                <div class="chart-bar">
+                    <span class="chart-label">Intel</span>
+                    <div class="chart-bar-fill" style="width: 60%; background: #0068b5;">~25-30%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Qualcomm</span>
+                    <div class="chart-bar-fill" style="width: 55%; background: #3253dc;">~23-25%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">NVIDIA</span>
+                    <div class="chart-bar-fill" style="width: 45%; background: #76b900;">~18-22%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">Samsung (Semi)</span>
+                    <div class="chart-bar-fill" style="width: 35%; background: #1428a0;">~15-18%</div>
+                </div>
+                <div class="chart-bar">
+                    <span class="chart-label">TSMC</span>
+                    <div class="chart-bar-fill" style="width: 20%; background: #c62828;">~8-9%</div>
+                </div>
+            </div>
+
+            <h4>4.2.3 Capital Expenditure (CapEx)</h4>
+            <p><strong>Capital Expenditure (CapEx)</strong> is one of the most critical financial metrics in the semiconductor industry, as it represents the investment in manufacturing capacity and technology development. Companies with higher CapEx commitments are better positioned for future growth but face greater financial risk during downturns.</p>
+
+            <p>Recent trends in semiconductor CapEx:</p>
+            <ul>
+                <li><strong>Samsung:</strong> Investing heavily in both memory and foundry capacity, with annual CapEx in the range of $30-40+ billion</li>
+                <li><strong>TSMC:</strong> Committed to $30+ billion annual CapEx to maintain technology leadership and expand capacity for AI chip demand</li>
+                <li><strong>Intel:</strong> Significant CapEx for IDM 2.0 strategy and foundry services expansion</li>
+                <li><strong>SK Hynix:</strong> Focused investment in HBM and advanced DRAM technology</li>
+            </ul>
+
+            <div class="chart-container">
+                <div class="chart-title">Semiconductor CapEx / Revenue Ratio (Major Companies)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>FY18</th>
+                            <th>FY19</th>
+                            <th>FY20</th>
+                            <th>FY21</th>
+                            <th>FY22</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NVIDIA</td>
+                            <td>~11%</td>
+                            <td>~8%</td>
+                            <td>~7%</td>
+                            <td>~7%</td>
+                            <td>~53%</td>
+                        </tr>
+                        <tr>
+                            <td>TSMC</td>
+                            <td>~27%</td>
+                            <td>~31%</td>
+                            <td>~39%</td>
+                            <td>~48%</td>
+                            <td>~48%</td>
+                        </tr>
+                        <tr>
+                            <td>AVGO (Broadcom)</td>
+                            <td>~6%</td>
+                            <td>~5%</td>
+                            <td>~8%</td>
+                            <td>~8%</td>
+                            <td>~7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85em; color:#888; margin-top:8px;">Note: NVIDIA FY18-FY20 reflects lower CapEx/revenue; FY22 reflects changing model. Based on NVIDIA, TSMC, Broadcom data (FY18-FY22).</p>
+            </div>
+
+            <h4>4.2.4 Inventory Turnover</h4>
+            <p><strong>Inventory Turnover</strong> measures how quickly a company sells and replaces its inventory. In the semiconductor industry, this metric is particularly important as it reflects both demand health and supply management efficiency.</p>
+
+            <p>Key observations:</p>
+            <ul>
+                <li>When inventory turnover decreases (inventory builds up), it can signal weakening demand and potential price declines ahead</li>
+                <li>When inventory turnover increases, it signals strong demand and potential for price increases</li>
+                <li>During the 2022-2023 downturn, memory companies saw significant inventory buildup, which subsequently normalized as the market recovered</li>
+                <li>Fabless companies generally maintain lower inventory levels since they don't hold raw wafer stock</li>
+            </ul>
+
+            <div class="chart-container">
+                <div class="chart-title">Semiconductor Inventory-to-Revenue Ratio Trends</div>
+                <p>Inventory ratios peaked during the 2022-2023 downcycle as demand weakened. Memory companies (Samsung, SK Hynix) saw particularly high inventory levels before the market recovery began in late 2023, driven by AI-related demand for HBM and advanced DRAM.</p>
+                <p style="font-size:0.85em; color:#888;">Source: Meritz Securities</p>
+            </div>
+
+            <h4>4.2.5 Profitability Metrics (Return on Equity)</h4>
+            <div class="chart-container">
+                <div class="chart-title">Return on Equity Comparison (FY18-FY22)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>FY18</th>
+                            <th>FY19</th>
+                            <th>FY20</th>
+                            <th>FY21</th>
+                            <th>FY22</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NVIDIA</td>
+                            <td>7.95</td>
+                            <td>6.21</td>
+                            <td>6.2</td>
+                            <td>5.7</td>
+                            <td>6.89</td>
+                        </tr>
+                        <tr>
+                            <td>TSMC</td>
+                            <td>3.81</td>
+                            <td>3.55</td>
+                            <td>5.39</td>
+                            <td>13.01</td>
+                            <td>6.42</td>
+                        </tr>
+                        <tr>
+                            <td>AVGO (Broadcom)</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>9.21</td>
+                            <td>2.91</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.85em; color:#888; margin-top:8px;">Note: Based on NVIDIA, TSMC, and AVGO ROE data (FY18-FY22).</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Industry Trends and Recent Developments -->
+        <section class="section" id="sec5">
+            <h2>5. Industry Trends and Recent Developments</h2>
+
+            <h3 id="sec5-1">5.1 Recent Market Trends</h3>
+
+            <h4>5.1.1 Current Market Status</h4>
+            <p>The semiconductor market has been experiencing a significant recovery phase following the cyclical downturn of 2022-2023. Key market indicators show:</p>
+
+            <ul>
+                <li><strong>Memory recovery:</strong> DRAM and NAND prices have stabilized and begun recovering, particularly for AI-related products like HBM</li>
+                <li><strong>AI investment boom:</strong> Hyperscalers (cloud service providers) are investing unprecedented amounts in AI infrastructure, driving demand for advanced GPUs and custom accelerators</li>
+                <li><strong>Cryptocurrency correlation:</strong> There has historically been a correlation between cryptocurrency prices (particularly Bitcoin) and semiconductor demand for mining-related GPUs, though this relationship has weakened as AI became the dominant demand driver for GPUs</li>
+            </ul>
+
+            <h4>5.1.2 Silicon Price and Market Dynamics</h4>
+            <p>Silicon prices and semiconductor ASPs (Average Selling Prices) reflect the health of the industry. Recent trends show a bifurcated market: AI-related chips command premium pricing with strong demand, while traditional segments (PCs, smartphones) show more moderate growth.</p>
+
+            <!-- Section 5.2 -->
+            <h3 id="sec5-2">5.2 Key Industry Issues</h3>
+
+            <h4>5.2.1 AI Semiconductor Market Expansion</h4>
+            <p>The AI semiconductor market is experiencing explosive growth. Key developments include:</p>
+
+            <ul>
+                <li><strong>NVIDIA dominance:</strong> NVIDIA's data center GPU revenue has grown multiple-fold, making it the most valuable semiconductor company globally</li>
+                <li><strong>Custom AI chips:</strong> Major tech companies are developing proprietary AI accelerators to reduce dependency on NVIDIA and optimize for their specific workloads</li>
+                <li><strong>Edge AI processing:</strong> NPUs (Neural Processing Units) are being integrated into smartphones, laptops, and IoT devices for on-device AI processing</li>
+                <li><strong>AI chip startups:</strong> Numerous startups are developing specialized AI accelerators for specific use cases (Cerebras, Groq, SambaNova, etc.)</li>
+            </ul>
+
+            <h4>5.2.2 Technology Development Trends</h4>
+            <p>Semiconductor technology continues to advance across multiple dimensions:</p>
+
+            <p><strong>Process Technology:</strong></p>
+            <ul>
+                <li>TSMC and Samsung are advancing toward <strong>2nm</strong> and below using Gate-All-Around (GAA) transistor architecture (TSMC's N2, Samsung's SF2)</li>
+                <li>Intel is pursuing its "5 nodes in 4 years" strategy (Intel 7 → Intel 4 → Intel 3 → Intel 20A → Intel 18A)</li>
+                <li>EUV lithography (and future High-NA EUV) from ASML is essential for advanced nodes</li>
+            </ul>
+
+            <p><strong>Advanced Packaging:</strong></p>
+            <ul>
+                <li>TSMC's CoWoS (Chip-on-Wafer-on-Substrate) packaging is in high demand for AI chips</li>
+                <li>3D stacking technologies (HBM, 3D NAND) continue to advance</li>
+                <li>Chiplet-based architectures are becoming mainstream, allowing modular chip design</li>
+            </ul>
+
+            <p><strong>New Materials and Architectures:</strong></p>
+            <ul>
+                <li>Exploration of new channel materials (e.g., 2D materials, carbon nanotubes) for beyond-silicon computing</li>
+                <li>RISC-V open-source instruction set architecture gaining traction as an alternative to ARM</li>
+                <li>Photonic computing and quantum computing as longer-term disruptive technologies</li>
+            </ul>
+
+            <h4>5.2.3 Key Government Policy Impacts</h4>
+            <p>Government policies continue to significantly impact the semiconductor industry landscape:</p>
+
+            <ul>
+                <li><strong>U.S. CHIPS Act implementation:</strong> Subsidies being distributed to Intel, TSMC, Samsung, and others for U.S. fab construction</li>
+                <li><strong>Expanded export controls:</strong> Continuous tightening of restrictions on semiconductor technology exports to China</li>
+                <li><strong>Talent competition:</strong> Global competition for semiconductor engineers and researchers intensifying</li>
+                <li><strong>Supply chain resilience:</strong> Governments promoting "friend-shoring" and supply chain diversification</li>
+            </ul>
+
+            <h4>5.2.4 Emerging Growth Areas</h4>
+            <p>Several emerging areas are expected to drive future semiconductor demand growth:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Growth Area</th>
+                        <th>Description</th>
+                        <th>Key Semiconductor Demand</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Generative AI</strong></td>
+                        <td>LLMs, image/video generation, AI agents</td>
+                        <td>High-end GPUs, HBM, AI accelerators</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Autonomous Vehicles</strong></td>
+                        <td>L3+ autonomous driving technology</td>
+                        <td>AI SoCs, sensors, power management ICs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Robotics</strong></td>
+                        <td>Humanoid robots, industrial automation</td>
+                        <td>AI processors, sensors, motor control ICs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantum Computing</strong></td>
+                        <td>Quantum processors and control electronics</td>
+                        <td>Cryogenic electronics, specialized control ICs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6G Communications</strong></td>
+                        <td>Next-generation wireless technology</td>
+                        <td>RF chips, baseband processors, mmWave components</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AR/VR/XR</strong></td>
+                        <td>Spatial computing and metaverse</td>
+                        <td>Custom SoCs, display drivers, sensors</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <strong>Industry Outlook Summary:</strong> The semiconductor industry stands at an inflection point driven by AI. While traditional cyclical dynamics continue, the structural demand from AI, automotive electrification, and digital infrastructure is expected to drive the industry toward the $1 trillion revenue milestone by 2030. Key risks include geopolitical tensions, supply chain concentration, and the massive capital requirements for next-generation technology development.
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <hr style="margin-bottom: 20px; border: none; border-top: 1px solid #ddd;">
+            <p><strong>Semiconductor Industry Report</strong></p>
+            <p></p>
+            <p>Data Sources: Gartner, WSTS, McKinsey & Co., Meritz Securities, CSIS, Statista</p>
+            <p>KSIC Industry Code: 57101010 (Semiconductors)</p>
+            <p style="margin-top: 15px;"><strong>Created by Joe Son</strong></p>
+            <p style="margin-top: 10px; color: #999;">This report is compiled from the industry research platform for informational purposes. Market data and projections are based on available sources and may be subject to revision.</p>
+        </footer>
+    </div>
+</body>
+</html>
